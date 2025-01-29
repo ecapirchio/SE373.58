@@ -1,0 +1,98 @@
+<h2>Update Employee</h2>
+
+<style>
+    h2 {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 2rem;
+        color: #444;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    form label {
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+
+    form input, form select, form button {
+        margin-bottom: 15px;
+        padding: 10px;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 100%;
+    }
+
+    form button {
+        background: #0073e6;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    form button:hover {
+        background: #005bb5;
+    }
+
+    .btn-view {
+        display: block;
+        width: 200px;
+        margin: 20px auto;
+        padding: 10px 20px;
+        font-size: 1rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: white;
+        background-color: #e60000;
+        text-align: center;
+        border-radius: 5px;
+        transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-view:hover {
+        background-color: #b30000;
+        transform: translateY(-2px);
+    }
+
+    .button-container {
+        text-align: center;
+    }
+</style>
+
+<form action="/update/{{employee._id}}" method="POST">
+    <label>First Name:</label>
+    <input type="text" name="firstName" value="{{employee.firstName}}" required>
+
+    <label>Last Name:</label>
+    <input type="text" name="lastName" value="{{employee.lastName}}" required>
+
+    <label>Department:</label>
+    <select name="department" required>
+        <option value="HR" {{#if (eq employee.department "HR")}}selected{{/if}}>HR</option>
+        <option value="Engineering" {{#if (eq employee.department "Engineering")}}selected{{/if}}>Engineering</option>
+        <option value="Marketing" {{#if (eq employee.department "Marketing")}}selected{{/if}}>Marketing</option>
+    </select>
+
+    <label>Start Date:</label>
+    <input type="date" name="startDate" value="{{employee.startDateFormatted}}" required>
+
+    <label>Job Title:</label>
+    <input type="text" name="jobTitle" value="{{employee.jobTitle}}" required>
+
+    <label>Salary:</label>
+    <input type="number" name="salary" value="{{employee.salary}}" required>
+
+    <button type="submit">Update Employee</button>
+</form>
+
+<div class="button-container">
+    <a href="/view" class="btn-view">Back</a>
+</div>

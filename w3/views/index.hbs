@@ -1,0 +1,94 @@
+<h2>Add Employee</h2>
+<style>
+    form {
+        display: flex;
+        flex-direction: column;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    form label {
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+    form input, form select, form button {
+        margin-bottom: 15px;
+        padding: 10px;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 100%;
+    }
+    form button {
+        background: #0073e6;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+    form button:hover {
+        background: #005bb5;
+    }
+
+    .btn-view {
+        display: block;
+        width: 200px;
+        margin: 20px auto;
+        padding: 10px 20px;
+        font-size: 1rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: white;
+        background-color: #28a745;
+        text-align: center;
+        border-radius: 5px;
+        transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-view:hover {
+        background-color: #218838;
+        transform: translateY(-2px);
+    }
+
+    .button-container {
+        text-align: center;
+    }
+
+    h2 {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 2rem;
+        color: #444;
+    }
+
+</style>
+
+<form action="/add" method="POST">
+    <label>First Name:</label>
+    <input type="text" name="firstName" required>
+
+    <label>Last Name:</label>
+    <input type="text" name="lastName" required>
+
+    <label>Department:</label>
+    <select name="department" required>
+        <option value="HR">HR</option>
+        <option value="Engineering">Engineering</option>
+        <option value="Marketing">Marketing</option>
+    </select>
+
+    <label>Start Date:</label>
+    <input type="date" name="startDate" required>
+
+    <label>Job Title:</label>
+    <input type="text" name="jobTitle" required>
+
+    <label>Salary:</label>
+    <input type="number" name="salary" required>
+
+    <button type="submit">Add Employee</button>
+</form>
+
+<div class="button-container">
+    <a href="/view" class="btn-view">View Employees</a>
+</div>
