@@ -1,0 +1,111 @@
+<h2>Register</h2>
+<style>
+    h2 {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 2rem;
+        color: #444;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        max-width: 400px;
+        margin: 20px auto;
+        padding: 20px;
+        background: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    form label {
+        margin-bottom: 8px;
+        font-weight: bold;
+    }
+
+    form input {
+        margin-bottom: 15px;
+        padding: 10px;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 100%;
+    }
+
+    form button {
+        background: #0073e6;
+        color: white;
+        border: none;
+        padding: 10px;
+        font-size: 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    form button:hover {
+        background: #005bb5;
+    }
+
+    p {
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    a {
+        color: #0073e6;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    .error-message {
+        text-align: center;
+        color: red;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+</style>
+
+<form action="/register" method="POST" onsubmit="return validatePasswords()">
+    <label>Username:</label>
+    <input type="text" name="username" required>
+
+    <label>Email:</label>
+    <input type="email" name="email" required>
+
+    <label>Password:</label>
+    <input type="password" id="password" name="password" required>
+
+    <label>Confirm Password:</label>
+    <input type="password" id="confirmPassword" required>
+
+    <p id="passwordError" class="error-message" style="display: none;">Passwords do not match!</p>
+
+    <button type="submit">Register</button>
+</form>
+
+<p>Already have an account? <a href="/login">Login</a></p>
+
+{{#if error}}
+    <p class="error-message">{{error}}</p>
+{{/if}}
+
+<script>
+    function validatePasswords() {
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+        const errorMessage = document.getElementById('passwordError');
+
+        if (password !== confirmPassword) {
+            errorMessage.style.display = 'block';
+            return false; // Prevent form submission
+        } else {
+            errorMessage.style.display = 'none';
+            return true; // Allow form submission
+        }
+    }
+</script>

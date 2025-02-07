@@ -49,7 +49,8 @@
 
     .btn-edit,
     .btn-delete,
-    .btn-add {
+    .btn-add,
+    .btn-dashboard {
         display: inline-block;
         padding: 10px 20px;
         font-size: 0.9rem;
@@ -92,6 +93,16 @@
         transform: translateY(-2px);
     }
 
+    .btn-dashboard {
+        background-color: #ff9800;
+        margin-top: 10px;
+    }
+
+    .btn-dashboard:hover {
+        background-color: #e68900;
+        transform: translateY(-2px);
+    }
+
     table {
         margin: 0 auto;
     }
@@ -104,7 +115,9 @@
 
 <div class="actions">
     <a href="/" class="btn-add">Add Employee</a>
+    <a href="/dashboard" class="btn-dashboard">Back to Dashboard</a>
 </div>
+
 <table>
     <thead>
         <tr>
@@ -127,12 +140,19 @@
             <td>{{this.jobTitle}}</td>
             <td>${{this.salary}}</td>
             <td>
-                <a href="/update/{{this._id}}">Edit</a> |
-                <form action="/delete/{{this._id}}" method="POST" style="display:inline;">
-                    <button type="submit">Delete</button>
+                <a href="/update/{{this._id}}" class="btn-edit">Edit</a>
+                <form action="/delete/{{this._id}}" method="POST" style="display:inline;" onsubmit="return confirmDelete();">
+                    <button type="submit" class="btn-delete">Delete</button>
                 </form>
             </td>
         </tr>
         {{/each}}
     </tbody>
 </table>
+
+<!-- JavaScript for Delete Confirmation -->
+<script>
+    function confirmDelete() {
+        return confirm("Are you sure you want to delete this employee?");
+    }
+</script>

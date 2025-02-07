@@ -1,0 +1,87 @@
+<h2>Welcome, {{user.username}}!</h2>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+        color: #333;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+
+    h2 {
+        margin-top: 20px;
+        font-size: 2rem;
+        color: #444;
+    }
+
+    .user-info {
+        background: white;
+        max-width: 400px;
+        margin: 20px auto;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        text-align: left;
+    }
+
+    .user-info p {
+        font-size: 1.1rem;
+        margin: 10px 0;
+    }
+
+    .btn-logout {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 1rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: white;
+        background-color: #e60000;
+        border-radius: 5px;
+        transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-logout:hover {
+        background-color: #b30000;
+        transform: translateY(-2px);
+    }
+
+    .dashboard-container {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .btn-dashboard {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 1rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: white;
+        background-color: #0073e6;
+        border-radius: 5px;
+        margin: 10px;
+        transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-dashboard:hover {
+        background-color: #005bb5;
+        transform: translateY(-2px);
+    }
+</style>
+
+<!-- User Info Section -->
+<div class="user-info">
+    <p><strong>Username:</strong> {{user.username}}</p>
+    <p><strong>Email:</strong> {{user.email}}</p>
+</div>
+
+<!-- Dashboard Navigation -->
+<div class="dashboard-container">
+    <a href="/view" class="btn-dashboard">View Employees</a>
+    <a href="/logout" class="btn-logout">Logout</a>
+</div>
