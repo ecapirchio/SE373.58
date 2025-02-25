@@ -29,9 +29,18 @@ router.post('/add', async (req, res) => {
 
 // View Employees
 router.get('/view', async (req, res) => {
-    const employees = await Employee.find();
-    res.render('view', { employees });
+    try {
+        console.log("✅ Fetching employees from database...");
+        const employees = await Employee.find();
+        console.log("✅ Employees fetched:", employees);
+
+        res.render('view', { employees });
+    } catch (error) {
+        console.error("❌ Error fetching employees:", error);
+        res.status(500).send("Error fetching employees");
+    }
 });
+
 
 // Update Employee
 router.get('/update/:id', async (req, res) => {
