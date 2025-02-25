@@ -1,6 +1,6 @@
 const express = require('express');
 const User = require('../models/User');
-const bcrypt = require('bcrypt');
+const bcryptjs = require('bcryptjs');
 const router = express.Router();
 
 const session = require('express-session');
@@ -32,7 +32,7 @@ router.post('/login', async (req, res) => {
             return res.render('login', { error: 'Invalid email or password' });
         }
 
-        const isMatch = await bcrypt.compare(password, user.password);
+        const isMatch = await bcryptjs.compare(password, user.password);
         if (!isMatch) {
             return res.render('login', { error: 'Invalid email or password' });
         }
